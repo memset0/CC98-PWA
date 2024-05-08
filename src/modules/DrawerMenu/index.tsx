@@ -1,5 +1,8 @@
 import React from 'react'
 
+import { useTheme } from '@material-ui/core/styles'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+
 import useModel from '@/hooks/useModel'
 import stateModel from '@/models/state'
 
@@ -7,16 +10,15 @@ import { Drawer, List } from '@material-ui/core'
 
 import DrawerContent from './DrawerContent'
 
-interface Props {
-  isDesktop: boolean
-}
-
 export const mobileDrawerWidth = 180
 export const desktopDrawerWidth = 220
 
-const DrawerMenu: React.FC<Props> = ({ isDesktop }: Props) => {
+const DrawerMenu: React.FC = () => {
   const { isDrawerOpen } = useModel(stateModel, ['isDrawerOpen'])
   const { CLOSE_DRAWER } = stateModel
+
+  const theme = useTheme()
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
 
   if (isDesktop) {
     CLOSE_DRAWER()

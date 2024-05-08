@@ -35,11 +35,11 @@ const Layout = () => {
   return (
     <>
       <Background />
-      <DrawerMenu isDesktop={isDesktop} />
+      <DrawerMenu />
       <div style={isDesktop ? { paddingLeft: 220 } : { width: '100%' }}>
         <Container>
           <Placeholder />
-          <TopBar isDesktop={isDesktop} />
+          <TopBar />
           <Router />
         </Container>
       </div>

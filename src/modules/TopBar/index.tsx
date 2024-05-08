@@ -1,6 +1,9 @@
 import React from 'react'
 import muiStyled from '@/muiStyled'
 
+import { useTheme } from '@material-ui/core/styles'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+
 import stateModel from '@/models/state'
 
 import { AppBar, Button, IconButton, Toolbar, Typography } from '@material-ui/core'
@@ -41,24 +44,25 @@ const Version = muiStyled(Button).attrs({
   marginRight: -12,
 })
 
-interface Props {
-  isDesktop: boolean
+const TopBar: React.FC = () => {
+  const theme = useTheme()
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
+
+  return (
+    <AppBarS elevation={0}>
+      <ToolbarS>
+        <IconButtonS
+          onClick={stateModel.OPEN_DRAWER}
+          style={isDesktop ? { display: 'none' } : { display: 'block' }}
+        >
+          <MenuIcon />
+        </IconButtonS>
+
+        <MainText>CC98</MainText>
+        <Version>{version}</Version>
+      </ToolbarS>
+    </AppBarS>
+  )
 }
-
-const TopBar: React.FC<Props> = ({ isDesktop }: Props) => (
-  <AppBarS elevation={0}>
-    <ToolbarS>
-      <IconButtonS
-        onClick={stateModel.OPEN_DRAWER}
-        style={isDesktop ? { display: 'none' } : { display: 'block' }}
-      >
-        <MenuIcon />
-      </IconButtonS>
-
-      <MainText>CC98</MainText>
-      <Version>{version}</Version>
-    </ToolbarS>
-  </AppBarS>
-)
 
 export default TopBar
