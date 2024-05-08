@@ -11,14 +11,14 @@ import DetailItem from './components/DetailItem'
 import Editor from './Editor'
 import { getMessageContent, sendMessage } from '@/services/message'
 
-const ListS = muiStyled(List)({
+const ListS = muiStyled(List)(theme => ({
   width: '100vw',
   maxWidth: 600,
   position: 'absolute',
   top: 56,
   bottom: 80,
   padding: '8px 0',
-})
+}))
 
 const FixBottomDiv = styled.div`
   position: fixed;

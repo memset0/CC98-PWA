@@ -41,10 +41,17 @@ const Version = muiStyled(Button).attrs({
   marginRight: -12,
 })
 
-const TopBar: React.FC = () => (
+interface Props {
+  isDesktop: boolean
+}
+
+const TopBar: React.FC<Props> = ({ isDesktop }: Props) => (
   <AppBarS elevation={0}>
     <ToolbarS>
-      <IconButtonS onClick={stateModel.OPEN_DRAWER}>
+      <IconButtonS
+        onClick={stateModel.OPEN_DRAWER}
+        style={isDesktop ? { display: 'none' } : { display: 'block' }}
+      >
         <MenuIcon />
       </IconButtonS>
 

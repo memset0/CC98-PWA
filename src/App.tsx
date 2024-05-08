@@ -7,25 +7,14 @@ import { ThemeProvider } from '@material-ui/styles'
 
 import { getTheme } from '@/theme'
 
-import TopBar from '@/modules/TopBar'
-import DrawerMenu from '@/modules/DrawerMenu'
-import BackGround from '@/components/BackGround'
-import Router from '@/router'
-
-const App = () => (
-  <BackGround>
-    <TopBar />
-    <DrawerMenu />
-    <Router />
-  </BackGround>
-)
+import Layout from '@/Layout'
 
 const Root = () => {
   const { theme, mode } = useModel(settingModel, ['theme', 'mode'])
 
   return (
     <ThemeProvider theme={getTheme(theme, mode)}>
-      <App />
+      <Layout />
     </ThemeProvider>
   )
 }
